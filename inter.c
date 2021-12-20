@@ -6,12 +6,11 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 21:19:47 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/12/20 22:08:44 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:10:47 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int	slen(char *str)
 {
@@ -77,7 +76,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	len = uniquify(argv[1]);
-	printf("%s\tlen:%i\n", argv[1], len);
 	while (len--)
 		findnprint(argv[2], *(argv[1]++));
 	write(1, "\n", 1);
