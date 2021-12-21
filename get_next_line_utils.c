@@ -14,14 +14,14 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-int	main(int argc, char **argv)
-{
-	int	fd;
-
-	if (argc > 1)
-		fd = open(argv[1], O_RDONLY);
-	else
-		fd = 0;
-	printf("Line 1\n%s", get_next_line(fd));
-	printf("Line 2\n%s", get_next_line(fd));
-}
+//int	main(int argc, char **argv)
+//{
+//	int	fd;
+//
+//	if (argc > 1)
+//		fd = open(argv[1], O_RDONLY);
+//	else
+//		fd = 0;
+//	printf("Line 1\n%s", get_next_line(fd));
+//	printf("Line 2\n%s", get_next_line(fd));
+//}

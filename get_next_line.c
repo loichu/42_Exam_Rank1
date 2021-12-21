@@ -26,18 +26,19 @@ void	initbuf(int fd, t_buf *buf)
 {
 	buf->fd = fd;
 	buf->max = read(fd, buf->data, BUFFER_SIZE);
-	buf->pos = 0;
+	buf->pos = -1;
 }
 
 char	readbuf(t_buf *buf)
 {
+	buf->pos++;
 	if (buf->pos == buf->max)
 	{
 		buf->pos = 0;
 		buf->max = read(buf->fd, buf->data, BUFFER_SIZE);
 	}
 	if (buf->max)
-		return (buf->data[buf->pos++]);
+		return (buf->data[buf->pos]);
 	return (0);
 }
 
@@ -79,8 +80,7 @@ char	*get_next_line(int fd)
 	if (buf.fd != fd && fd > -1)
 		initbuf(fd, &buf);
 	line = 0;
-	c = buf.data[buf.pos++];
-	printf("%x\n", c);
+	c = readbuf(&buf);
 	while (c)
 	{
 		line = sjoin(line, c);
@@ -88,6 +88,5 @@ char	*get_next_line(int fd)
 			return (line);
 		c = readbuf(&buf);
 	}
-	printf("%s\n", line);
 	return (line);
 }
